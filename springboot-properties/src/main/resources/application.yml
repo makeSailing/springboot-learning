@@ -1,0 +1,20 @@
+com:
+    makesailing:
+        blog:
+            name: jamie
+            title: SpringBoot Review
+            desc: ${com.makesailing.blog.name} 正大努力 ${com.makesailing.blog.title}
+
+#            随机字符串
+            value: ${random.value}
+            # 随机int
+            number: ${random.int}
+#           随机 log
+            bignumber: ${random.long}
+#           10 以内的随机数
+            test1-10: ${random.int(10)}
+#            10-20 以内的随机数
+            test10-20: ${random.int(10,20)}
+spring:
+  profiles:
+    active: dev
