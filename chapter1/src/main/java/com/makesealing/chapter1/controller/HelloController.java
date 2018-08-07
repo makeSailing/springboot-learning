@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * #
  *
- * @author <a href="mailto:jamie.li@wolaidai.com">jamie.li</a>
+ *
  * @date 2018/8/6 17:31
  */
 @RestController

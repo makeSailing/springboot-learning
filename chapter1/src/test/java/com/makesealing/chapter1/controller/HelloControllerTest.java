@@ -18,7 +18,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 /**
  * HelloController Tester.
  *
- * @author <a href="mailto:jamie.li@wolaidai.com">jamie.li</a>
+ *
  * @since <pre>08/06/2018</pre>
  */
 @RunWith(SpringRunner.class)
