@@ -11,7 +11,7 @@ java -jar  包名  --server.port:8080 (自定义端口)
 
 application-{profile}.yml
 
-在 application.yml 选择加载那个配置
+在 application.yml 选择加载那个配置**
 
 ```yaml
 spring:
