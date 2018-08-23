@@ -6,7 +6,7 @@
   <groupId>com.makesailing.neo</groupId>
   <artifactId>springboot-jpa-crud</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
+  <packaging>jar</packaging>
 
   <name>springboot-jpa-crud</name>
   <description>Demo project for Spring Boot</description>
@@ -46,11 +46,6 @@
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-tomcat</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
@@ -58,6 +53,11 @@
       <groupId>com.alibaba</groupId>
       <artifactId>druid</artifactId>
       <version>1.0.29</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>1.2.35</version>
     </dependency>
   </dependencies>
 
