@@ -17,13 +17,16 @@ public class SessionInterceptor implements HandlerInterceptor {
   @Override
   public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o)
       throws Exception {
-    // 登录不作拦截
-    if (Objects.equals(httpServletRequest.getRequestURL(), "/user/login") ||
-        Objects.equals(httpServletRequest.getRequestURL(), "/user/login_view")) {
+
+    System.out.println(httpServletRequest.getRequestURI());
+    //登录不做拦截
+
+    if(httpServletRequest.getRequestURI().equals("/user/login") || httpServletRequest.getRequestURI().equals("/user/login_view")) {
       return true;
     }
-    // 验证 session是否存在
-    if (Objects.isNull(httpServletRequest.getSession().getAttribute("user_session"))) {
+    //验证session是否存在
+    if(Objects.isNull(httpServletRequest.getSession().getAttribute("_session_user")))
+    {
       httpServletResponse.sendRedirect("/user/login_view");
       return false;
     }
