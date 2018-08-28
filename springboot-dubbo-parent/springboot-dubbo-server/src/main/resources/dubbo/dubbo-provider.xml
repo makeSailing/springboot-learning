@@ -35,7 +35,9 @@ http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
   <!-- 声明需要暴露的服务接口，其它服务通过RPC远程调用当前服务时就是通过这里的定义来调用的，注意interface写接口的路径，不要写实现的路径 -->
   <!--<dubbo:service interface="com.makesailing.neo.service.DemoService" ref="demoService" timeout=/>-->
 
-  <dubbo:service interface="com.makesailing.neo.ItemService" ref="itemService" timeout="6000"/>
+  <dubbo:service interface="com.makesailing.neo.service.ItemService" ref="itemService" timeout="6000"/>
+
+  <dubbo:service interface="com.makesailing.neo.service.UserService" ref="userService" timeout="6000"/>
 
 
 </beans>

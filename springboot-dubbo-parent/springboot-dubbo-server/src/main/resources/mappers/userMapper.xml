@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.makesailing.neo.dao.UserMapper">
+
+  <resultMap id="BaseResultMap" type="com.makesailing.neo.domain.User" >
+      <result column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <result column="user_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <result column="real_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <result column="park_code" jdbcType="CHAR" javaType="java.lang.String" />
+      <result column="park_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <result column="pwd" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <result column="state" jdbcType="TINYINT" javaType="java.lang.Byte" />
+      <result column="role" jdbcType="TINYINT" javaType="java.lang.Byte" />
+      <result column="last_date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <result column="last_ip" jdbcType="INTEGER" javaType="java.lang.String" />
+      <result column="login_count" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <result column="date_add" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <result column="date_upd" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, user_name, real_name, park_code, park_name, pwd, state, role, last_date, INET_NTOA(last_ip) last_ip,
+    login_count, date_add, date_upd
+  </sql>
+
+
+  <!-- 根据条件分页查询数据  开始 -->
+  <select id="selectListByQuery" resultMap="BaseResultMap" parameterType="com.makesailing.neo.vo.queryVo.UserQuery">
+    select <include refid="Base_Column_List"/> from `user`
+    <where>
+      <if test="name != null and name != ''">
+        and (user_name = #{name} or real_name = #{name})
+      </if>
+      <if test="parkCode != null and parkCode != ''">
+        and park_code = #{parkCode}
+      </if>
+      <if test="nameLike != null and nameLike != ''">
+        and (user_name like CONCAT('%', #{nameLike}, '%') or real_name like CONCAT('%', #{nameLike}, '%'))
+      </if>
+      <if test="notId != -1">
+        and id != #{notId}
+      </if>
+    </where>
+    order by id desc
+    <if test="pageSize > 0">
+      limit #{skip}, #{pageSize}
+    </if>
+  </select>
+  <!-- 根据条件分页查询数据  结束 -->
+
+  <!-- 根据条件查询记录数  开始 -->
+  <select id="selectCountByQuery" parameterType="com.makesailing.neo.vo.queryVo.UserQuery" resultType="java.lang.Integer">
+    SELECT count(*) FROM `user`
+    <where>
+      <if test="name != null and name != ''">
+        and (user_name = #{nameLike} or real_name = #{nameLike})
+      </if>
+      <if test="parkCode != null and parkCode != ''">
+        and park_code = #{parkCode}
+      </if>
+      <if test="nameLike != null and nameLike != ''">
+        and (user_name like CONCAT('%', #{nameLike}, '%') or real_name like CONCAT('%', #{nameLike}, '%'))
+      </if>
+      <if test="notId != -1">
+        and id != #{notId}
+      </if>
+    </where>
+  </select>
+  <!-- 根据条件查询记录数  结束 -->
+
+  <insert id="insertSelective" parameterType="com.makesailing.neo.domain.User" >
+    <!--<selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      VALUES IDENTITY_VAL_LOCAL()
+    </selectKey>-->
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="realName != null" >
+        real_name,
+      </if>
+      <if test="parkCode != null" >
+        park_code,
+      </if>
+      <if test="parkName != null" >
+        park_name,
+      </if>
+      <if test="pwd != null" >
+        pwd,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="role != null" >
+        role,
+      </if>
+      <if test="lastDate != null" >
+        last_date,
+      </if>
+      <if test="lastIp != null" >
+        last_ip,
+      </if>
+      <if test="loginCount != null" >
+        login_count,
+      </if>
+      <if test="dateAdd != null" >
+        date_add,
+      </if>
+      <if test="dateUpd != null" >
+        date_upd,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null" >
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="parkCode != null" >
+        #{parkCode,jdbcType=CHAR},
+      </if>
+      <if test="parkName != null" >
+        #{parkName,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null" >
+        #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=TINYINT},
+      </if>
+      <if test="role != null" >
+        #{role,jdbcType=TINYINT},
+      </if>
+      <if test="lastDate != null" >
+        #{lastDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastIp != null" >
+        INET_ATON(#{lastIp,jdbcType=INTEGER}),
+      </if>
+      <if test="loginCount != null" >
+        #{loginCount,jdbcType=INTEGER},
+      </if>
+      <if test="dateAdd != null" >
+        #{dateAdd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dateUpd != null" >
+        #{dateUpd,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.makesailing.neo.domain.User" >
+    update user
+    <set >
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null" >
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="parkCode != null" >
+        park_code = #{parkCode,jdbcType=CHAR},
+      </if>
+      <if test="parkName != null" >
+        park_name = #{parkName,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null" >
+        pwd = #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=TINYINT},
+      </if>
+      <if test="role != null" >
+        role = #{role,jdbcType=TINYINT},
+      </if>
+      <if test="lastDate != null" >
+        last_date = #{lastDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastIp != null" >
+        last_ip = INET_ATON(#{lastIp,jdbcType=INTEGER}),
+      </if>
+      <if test="loginCount != null" >
+        login_count = #{loginCount,jdbcType=INTEGER},
+      </if>
+      <if test="dateAdd != null" >
+        date_add = #{dateAdd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dateUpd != null" >
+        date_upd = #{dateUpd,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

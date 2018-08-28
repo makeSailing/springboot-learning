@@ -1,4 +1,4 @@
-package com.makesailing.neo;
+package com.makesailing.neo.service;
 
 /**
  * #
