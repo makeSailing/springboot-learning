@@ -2,10 +2,9 @@ package com.makesailing.neo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ImportResource;
-
+import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
-@ImportResource("classpath:dubbo-provider.xml")
+@ComponentScan(value = {"com.makesailing.neo"})
 public class SpringbootDubboServerApplication {
 
 	public static void main(String[] args) {

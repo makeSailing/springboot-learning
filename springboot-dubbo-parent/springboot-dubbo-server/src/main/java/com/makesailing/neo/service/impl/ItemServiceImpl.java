@@ -1,6 +1,6 @@
 package com.makesailing.neo.service.impl;
 
-import com.makesailing.neo.service.ItemService;
+import com.makesailing.neo.ItemService;
 import java.util.Objects;
 import org.springframework.stereotype.Service;
 

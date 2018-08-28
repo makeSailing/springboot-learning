@@ -52,9 +52,10 @@
 			<groupId>com.github.sgroschupf</groupId>
 			<artifactId>zkclient</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>com.makesailing.neo</groupId>
-			<artifactId>springboot-dubbo-server</artifactId>
+			<artifactId>springboot-dubbo-api</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo
+http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+  <!-- 提供方应用信息，用于计算依赖关系 -->
+  <dubbo:application name="${spring.application.name}"  />
+
+  <!-- 使用multicast广播注册中心暴露服务地址 -->
+  <dubbo:registry protocol="zookeeper" address="${zookeeper.connect}"  file="${dubbo.cache}"/>
+
+  <!-- 用dubbo协议在20880端口暴露服务 -->
+  <dubbo:protocol name="dubbo" port="${dubbo.protocol.port}"  threadpool="${dubbo.protocol.threadpool}"  threads="${dubbo.protocol.threads}"/>
+
+  <!-- 提供方的缺省值，当ProtocolConfig和ServiceConfig某属性没有配置时，采用此缺省值，可选。-->
+  <dubbo:provider connections="${dubbo.provider.connections}" timeout="${dubbo.provider.timeout}" retries="${dubbo.provider.retries}" version="${dubbo.provider.version}" />
+
+  <!-- 消费方缺省配置，当ReferenceConfig某属性没有配置时，采用此缺省值，可选。-->
+  <dubbo:consumer version="${dubbo.provider.version}" />
+
+  <!-- 监控中心配置，用于配置连接监控中心相关信息，可选。-->
+  <dubbo:monitor protocol="registry"/>
+
+  <!-- 当前服务作为消费者调用远程RPC服务时，因为都是基于接口的调用，所以interface只用写远程服务接口的路径，不要写实现 -->
+  <!--<dubbo:service interface="com.makesailing.neo.service.DemoService" ref="demoService" timeout=/>-->
+
+  <dubbo:reference interface="com.makesailing.neo.ItemService" id="itemService"  check="false"/>
+
+</beans>
