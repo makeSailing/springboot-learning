@@ -86,6 +86,16 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
 ```
 
+```mysql
+CREATE TABLE `user` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL COMMENT '名称',
+  `age` tinyint(4) DEFAULT '0' COMMENT '年龄',
+  `pwd` varchar(32) DEFAULT '' COMMENT '密码',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+```
+
 ##### 3. User
 
 ```java
