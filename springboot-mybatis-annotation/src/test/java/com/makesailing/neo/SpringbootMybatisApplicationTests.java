@@ -2,7 +2,9 @@ package com.makesailing.neo;
 
 import com.makesailing.neo.domain.User;
 import com.makesailing.neo.repository.UserMapper;
-import org.junit.Assert;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +26,22 @@ public class SpringbootMybatisApplicationTests {
   @Test
   @Rollback
   public  void testGetUserByName() {
-    userMapper.insertUser("jack", 30);
-    User user = userMapper.getUserByName("jack");
+    userMapper.insertUserByParam("jack", 30, "12345");
 
-    Assert.assertEquals(30,user.getAge().intValue());
+    Map<String, Object> map = new HashMap<>();
+	  map.put("name", "张三");
+	  map.put("age", 18);
+	  map.put("pwd", "123456");
+	userMapper.insertUserByMap(map);
+
+	  User user = new User();
+	  user.setName("李四");
+	  user.setAge(20);
+	  user.setPwd("123456");
+	userMapper.insertUserByObject(user);
+
+	  List<User> jack = userMapper.getUserByName("jack");
+
+    //Assert.assertEquals(30,user.getAge().intValue());
   }
 }
