@@ -33,7 +33,7 @@ public class MailServiceImplTest extends SpringbootMailApplicationTests {
     */ 
     @Test
     public void testSendSimpleMail() throws Exception {
-        mailService.sendSimpleMail("736145714@qq.com","test simple mail"," hello this is simple mail");
+        mailService.sendSimpleMail("601610870@qq.com","test simple mail"," hello this is simple mail");
     } 
     
         
