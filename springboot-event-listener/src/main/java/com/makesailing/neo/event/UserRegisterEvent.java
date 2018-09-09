@@ -24,6 +24,11 @@ public class UserRegisterEvent extends ApplicationEvent {
 		super(source);
 		this.userEntity = userEntity;
 	}
+
+	public UserEntity getUserEntity() {
+		return userEntity;
+	}
+
 }
 
 

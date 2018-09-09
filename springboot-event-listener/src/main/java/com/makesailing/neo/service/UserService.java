@@ -22,7 +22,7 @@ public class UserService {
 	 * 用户注册
 	 * @param userEntity
 	 */
-	private void register(UserEntity userEntity) {
+	public void register(UserEntity userEntity) {
 		// 省略其他逻辑
 
 		// 发布 userRegisterEvent 事件
