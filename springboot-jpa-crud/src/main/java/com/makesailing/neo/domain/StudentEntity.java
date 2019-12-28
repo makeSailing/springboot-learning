@@ -21,19 +21,19 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class StudentEntity implements Serializable {
 
-  private static final long serialVersionUID = 3222266340054874562L;
+    private static final long serialVersionUID = 3222266340054874562L;
 
-  @Id // 主键
-  @GeneratedValue //自增
-  @Column(name = "id") //列名
-  private Long id;
+    @Id // 主键
+    @GeneratedValue //自增
+    @Column(name = "id") //列名
+    private Long id;
 
-  @Column(name = "name")
-  private String name;
+    @Column(name = "name")
+    private String name;
 
-  @Column(name = "age")
-  private Integer age;
+    @Column(name = "age")
+    private Integer age;
 
-  @Column(name = "address")
-  private String address;
+    @Column(name = "address")
+    private String address;
 }

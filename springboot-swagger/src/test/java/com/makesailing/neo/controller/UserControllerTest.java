@@ -25,15 +25,14 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-/** 
-* UserController Tester. 
-* 
-*
-* @since <pre>08/07/2018</pre> 
-*/
+/**
+ * UserController Tester.
+ *
+ * @since <pre>08/07/2018</pre>
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class UserControllerTest  {
+public class UserControllerTest {
 
     @Autowired
     private WebApplicationContext webApplicationContext;
@@ -43,11 +42,11 @@ public class UserControllerTest  {
     @Before
     public void setUp() throws Exception {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
-    } 
-    
+    }
+
     @After
-    public void tearDown() throws Exception { 
-    } 
+    public void tearDown() throws Exception {
+    }
 
     @Test
     public void testUserController() throws Exception {
@@ -59,15 +58,15 @@ public class UserControllerTest  {
 
         // 新增用户
         User user = new User();
-		user.setId(1L);
-		user.setName("jamie");
-		user.setAge(20);
+        user.setId(1L);
+        user.setName("jamie");
+        user.setAge(20);
 
-		mockMvc.perform(post("/add").contentType(MediaType.APPLICATION_JSON).content(JSON.toJSONString(user)))
-			.andDo(print())
-			.andExpect(status().isOk())
-			.andExpect(jsonPath("status",is("200")))
-			.andReturn().getResponse().getContentAsString();
+        mockMvc.perform(post("/add").contentType(MediaType.APPLICATION_JSON).content(JSON.toJSONString(user)))
+            .andDo(print())
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("status", is("200")))
+            .andReturn().getResponse().getContentAsString();
 
         // 获取用户列表,应该有值
         mockMvc.perform(get("/users").accept(MediaType.APPLICATION_JSON_UTF8))
@@ -95,11 +94,10 @@ public class UserControllerTest  {
             .andExpect(content().string(equalTo("[]")));
 
     }
-    /** 
-    * 
-    * Method: getUserList() 
-    * 
-    */ 
+
+    /**
+     * Method: getUserList()
+     */
     @Test
     public void testGetUserList() throws Exception {
         mockMvc.perform(get("/users").accept(MediaType.APPLICATION_JSON_UTF8))
@@ -107,12 +105,10 @@ public class UserControllerTest  {
             .andDo(print())
             .andExpect(content().string(equalTo("[]")));
     }
-    
-    /** 
-    * 
-    * Method: addUser(@RequestBody User user) 
-    * 
-    */ 
+
+    /**
+     * Method: addUser(@RequestBody User user)
+     */
     @Test
     public void testAddUser() throws Exception {
         User user = new User();
@@ -122,40 +118,34 @@ public class UserControllerTest  {
 
         mockMvc.perform(post("/add").contentType(MediaType.APPLICATION_JSON).content(JSON.toJSONString(user)))
             .andExpect(status().isOk())
-			.andDo(print())
-			.andReturn().getResponse().getContentAsString();
+            .andDo(print())
+            .andReturn().getResponse().getContentAsString();
 
-    } 
-    
-    /** 
-    * 
-    * Method: getUserById(@PathVariable("id") Long id) 
-    * 
-    */ 
+    }
+
+    /**
+     * Method: getUserById(@PathVariable("id") Long id)
+     */
     @Test
-    public void testGetUserById() throws Exception { 
-    //TODO: Test goes here... 
-    } 
-    
-    /** 
-    * 
-    * Method: updateUser(@RequestBody User user) 
-    * 
-    */ 
+    public void testGetUserById() throws Exception {
+        //TODO: Test goes here...
+    }
+
+    /**
+     * Method: updateUser(@RequestBody User user)
+     */
     @Test
-    public void testUpdateUser() throws Exception { 
-    //TODO: Test goes here... 
-    } 
-    
-    /** 
-    * 
-    * Method: deleteUserById(@PathVariable("id")Long id) 
-    * 
-    */ 
+    public void testUpdateUser() throws Exception {
+        //TODO: Test goes here...
+    }
+
+    /**
+     * Method: deleteUserById(@PathVariable("id")Long id)
+     */
     @Test
-    public void testDeleteUserById() throws Exception { 
-    //TODO: Test goes here... 
-    } 
-    
-        
-    } 
+    public void testDeleteUserById() throws Exception {
+        //TODO: Test goes here...
+    }
+
+
+}

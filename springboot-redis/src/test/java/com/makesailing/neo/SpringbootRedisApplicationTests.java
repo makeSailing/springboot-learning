@@ -14,38 +14,38 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class SpringbootRedisApplicationTests {
 
-  @Test
-  public void contextLoads() {
-  }
+    @Test
+    public void contextLoads() {
+    }
 
-  @Autowired
-  private StringRedisTemplate stringRedisTemplate;
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
 
-  @Test
-  public void testRedisConnection() {
-    stringRedisTemplate.opsForValue().set("aaa", "111");
-    Assert.assertEquals("111",stringRedisTemplate.opsForValue().get("aaa"));
-  }
+    @Test
+    public void testRedisConnection() {
+        stringRedisTemplate.opsForValue().set("aaa", "111");
+        Assert.assertEquals("111", stringRedisTemplate.opsForValue().get("aaa"));
+    }
 
-  @Autowired
-  private RedisTemplate<String, User> redisTemplate;
+    @Autowired
+    private RedisTemplate<String, User> redisTemplate;
 
-  @Test
-  public void testUserRedis() {
-    // 保存对象
-    User user = new User("超人", 20);
-    redisTemplate.opsForValue().set(user.getName(), user);
+    @Test
+    public void testUserRedis() {
+        // 保存对象
+        User user = new User("超人", 20);
+        redisTemplate.opsForValue().set(user.getName(), user);
 
-    user = new User("蝙蝠侠", 30);
-    redisTemplate.opsForValue().set(user.getName(), user);
+        user = new User("蝙蝠侠", 30);
+        redisTemplate.opsForValue().set(user.getName(), user);
 
-    user = new User("蜘蛛侠", 40);
-    redisTemplate.opsForValue().set(user.getName(), user);
+        user = new User("蜘蛛侠", 40);
+        redisTemplate.opsForValue().set(user.getName(), user);
 
-    Assert.assertEquals(20, redisTemplate.opsForValue().get("超人").getAge().longValue());
-    Assert.assertEquals(30, redisTemplate.opsForValue().get("蝙蝠侠").getAge().longValue());
-    Assert.assertEquals(40, redisTemplate.opsForValue().get("蜘蛛侠").getAge().longValue());
+        Assert.assertEquals(20, redisTemplate.opsForValue().get("超人").getAge().longValue());
+        Assert.assertEquals(30, redisTemplate.opsForValue().get("蝙蝠侠").getAge().longValue());
+        Assert.assertEquals(40, redisTemplate.opsForValue().get("蜘蛛侠").getAge().longValue());
 
-  }
+    }
 
 }

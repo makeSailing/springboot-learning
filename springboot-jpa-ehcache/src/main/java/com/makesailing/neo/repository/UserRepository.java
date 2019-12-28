@@ -16,11 +16,11 @@ import org.springframework.data.repository.query.Param;
 public interface UserRepository extends JpaRepository<User, Long> {
 
 
-  User findUserByName(String name);
+    User findUserByName(String name);
 
-  User findUserByNameAndAge(String name, Integer age);
+    User findUserByNameAndAge(String name, Integer age);
 
-  //@Cacheable
-  @Query("from User u where u.name=:name")
-  User findUser(@Param("name") String name);
+    //@Cacheable
+    @Query("from User u where u.name=:name")
+    User findUser(@Param("name") String name);
 }

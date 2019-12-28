@@ -13,35 +13,34 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 /**
  * #
  *
- *
  * @date 2018/8/7 16:32
  */
 @Configuration
 @EnableSwagger2
 public class Swagger2 {
 
-	@Bean
-	public Docket createRestApi() {
-		return new Docket(DocumentationType.SWAGGER_2)
-			.apiInfo(apiInfo())
-			.select()
-			// 为当前包的路径
-			.apis(RequestHandlerSelectors.basePackage("com.makesailing.neo.controller"))
-			.paths(PathSelectors.any())
-			.build();
-	}
+    @Bean
+    public Docket createRestApi() {
+        return new Docket(DocumentationType.SWAGGER_2)
+            .apiInfo(apiInfo())
+            .select()
+            // 为当前包的路径
+            .apis(RequestHandlerSelectors.basePackage("com.makesailing.neo.controller"))
+            .paths(PathSelectors.any())
+            .build();
+    }
 
-	private ApiInfo apiInfo() {
-		return new ApiInfoBuilder()
-			// 页面标题
-			.title("Spring Boot中使用Swagger2构建RESTful API")
-			// 描述
-			.description("Spring Boot中使用Swagger2构建RESTful API")
-			.termsOfServiceUrl("http://www.baidu.com/")
-			// 版本号
-			.version("1.0")
-			.build();
-	}
+    private ApiInfo apiInfo() {
+        return new ApiInfoBuilder()
+            // 页面标题
+            .title("Spring Boot中使用Swagger2构建RESTful API")
+            // 描述
+            .description("Spring Boot中使用Swagger2构建RESTful API")
+            .termsOfServiceUrl("http://www.baidu.com/")
+            // 版本号
+            .version("1.0")
+            .build();
+    }
 }
 
 

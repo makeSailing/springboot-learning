@@ -22,22 +22,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/student")
 public class StudentController {
 
-  @Autowired
-  private StudentRepository studentRepository;
+    @Autowired
+    private StudentRepository studentRepository;
 
-  @GetMapping("/list")
-  public List<StudentEntity> getStudentList() {
-    return studentRepository.findAll();
-  }
+    @GetMapping("/list")
+    public List<StudentEntity> getStudentList() {
+        return studentRepository.findAll();
+    }
 
-  @PostMapping("/add")
-  public Long saveStudent(@RequestBody StudentEntity studentEntity) {
-    StudentEntity entity = studentRepository.save(studentEntity);
-    return entity.getId();
-  }
+    @PostMapping("/add")
+    public Long saveStudent(@RequestBody StudentEntity studentEntity) {
+        StudentEntity entity = studentRepository.save(studentEntity);
+        return entity.getId();
+    }
 
-  @PutMapping("/delete/{id}")
-  public void deleteStudent(@PathVariable Long id) {
-     studentRepository.delete(id);
-  }
+    @PutMapping("/delete/{id}")
+    public void deleteStudent(@PathVariable Long id) {
+        studentRepository.delete(id);
+    }
 }

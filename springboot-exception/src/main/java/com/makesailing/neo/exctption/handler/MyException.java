@@ -8,8 +8,8 @@ package com.makesailing.neo.exctption.handler;
  */
 public class MyException extends RuntimeException {
 
-  public MyException(String message) {
-    super(message);
-  }
+    public MyException(String message) {
+        super(message);
+    }
 
 }

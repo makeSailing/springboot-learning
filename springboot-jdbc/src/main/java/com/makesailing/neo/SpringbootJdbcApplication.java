@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SpringbootJdbcApplication {
 
-  public static void main(String[] args) {
-    SpringApplication.run(SpringbootJdbcApplication.class, args);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(SpringbootJdbcApplication.class, args);
+    }
 }

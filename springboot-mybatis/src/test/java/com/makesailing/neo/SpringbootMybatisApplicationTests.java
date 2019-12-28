@@ -14,19 +14,19 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class SpringbootMybatisApplicationTests {
 
-  @Test
-  public void contextLoads() {
-  }
+    @Test
+    public void contextLoads() {
+    }
 
-  @Autowired
-  private UserMapper userMapper;
+    @Autowired
+    private UserMapper userMapper;
 
-  @Test
-  @Rollback
-  public  void testGetUserByName() {
-    userMapper.insertUser("jack", 30);
-    User user = userMapper.getUserByName("jack");
+    @Test
+    @Rollback
+    public void testGetUserByName() {
+        userMapper.insertUser("jack", 30);
+        User user = userMapper.getUserByName("jack");
 
-    Assert.assertEquals(30,user.getAge().intValue());
-  }
+        Assert.assertEquals(30, user.getAge().intValue());
+    }
 }

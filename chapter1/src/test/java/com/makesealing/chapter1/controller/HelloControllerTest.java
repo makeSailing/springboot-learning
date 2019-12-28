@@ -1,4 +1,4 @@
-package com.makesealing.chapter1.controller; 
+package com.makesealing.chapter1.controller;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -17,7 +17,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 /**
  * HelloController Tester.
- *
  *
  * @since <pre>08/06/2018</pre>
  */

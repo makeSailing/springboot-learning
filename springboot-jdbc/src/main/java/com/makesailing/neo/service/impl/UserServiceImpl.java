@@ -14,26 +14,26 @@ import org.springframework.stereotype.Service;
 @Service(UserService.SERIVCE_ID)
 public class UserServiceImpl implements UserService {
 
-  @Autowired
-  private JdbcTemplate jdbcTemplate;
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
-  @Override
-  public void create(String name, Integer age) {
-    jdbcTemplate.update("insert into user (name ,age) values (?,?)", name, age);
-  }
+    @Override
+    public void create(String name, Integer age) {
+        jdbcTemplate.update("insert into user (name ,age) values (?,?)", name, age);
+    }
 
-  @Override
-  public void deleteByName(String name) {
-    jdbcTemplate.update("delete from user where name = ?", name);
-  }
+    @Override
+    public void deleteByName(String name) {
+        jdbcTemplate.update("delete from user where name = ?", name);
+    }
 
-  @Override
-  public Integer getAllUsers() {
-    return jdbcTemplate.queryForObject("select count(1) from user", Integer.class);
-  }
+    @Override
+    public Integer getAllUsers() {
+        return jdbcTemplate.queryForObject("select count(1) from user", Integer.class);
+    }
 
-  @Override
-  public void deleteAllUsers() {
-    jdbcTemplate.update("delete from user ");
-  }
+    @Override
+    public void deleteAllUsers() {
+        jdbcTemplate.update("delete from user ");
+    }
 }

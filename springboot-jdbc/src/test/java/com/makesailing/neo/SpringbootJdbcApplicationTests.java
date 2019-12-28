@@ -13,36 +13,36 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class SpringbootJdbcApplicationTests {
 
-  @Autowired
-  private UserService userService;
+    @Autowired
+    private UserService userService;
 
-  @Before
-  public void setUp() {
-    // 准备,清空 user 表
-    userService.deleteAllUsers();
-  }
+    @Before
+    public void setUp() {
+        // 准备,清空 user 表
+        userService.deleteAllUsers();
+    }
 
-  @Test
-  public void contextLoads() {
-  }
+    @Test
+    public void contextLoads() {
+    }
 
-  @Test
-  public void userTest() {
+    @Test
+    public void userTest() {
 
-    userService.create("jamie", 18);
-    userService.create("tom", 20);
-    userService.create("jack", 22);
-    userService.create("bin", 24);
-    userService.create("jason", 26);
+        userService.create("jamie", 18);
+        userService.create("tom", 20);
+        userService.create("jack", 22);
+        userService.create("bin", 24);
+        userService.create("jason", 26);
 
-    // 查询数据库,应有 5 条记录
-    Assert.assertEquals(5, userService.getAllUsers().intValue());
+        // 查询数据库,应有 5 条记录
+        Assert.assertEquals(5, userService.getAllUsers().intValue());
 
-    // 删除2个用户,还剩下3个
-    userService.deleteByName("tom");
-    userService.deleteByName("bin");
+        // 删除2个用户,还剩下3个
+        userService.deleteByName("tom");
+        userService.deleteByName("bin");
 
-    Assert.assertEquals(3,userService.getAllUsers().intValue());
-  }
+        Assert.assertEquals(3, userService.getAllUsers().intValue());
+    }
 
 }

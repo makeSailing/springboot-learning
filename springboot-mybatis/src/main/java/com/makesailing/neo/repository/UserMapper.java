@@ -15,10 +15,10 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface UserMapper {
 
-  @Select("select * from user where name = #{name}")
-  User getUserByName(@Param("name") String name);
+    @Select("select * from user where name = #{name}")
+    User getUserByName(@Param("name") String name);
 
-  @Insert("insert into user (name ,age) values ( #{name},#{age})")
-  int insertUser(@Param("name") String name, @Param("age") Integer age);
+    @Insert("insert into user (name ,age) values ( #{name},#{age})")
+    int insertUser(@Param("name") String name, @Param("age") Integer age);
 
 }

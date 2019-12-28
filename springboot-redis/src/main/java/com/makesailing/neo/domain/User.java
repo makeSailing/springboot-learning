@@ -16,9 +16,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class User implements Serializable {
 
-  private static final long serialVersionUID = 5353304049198007619L;
+    private static final long serialVersionUID = 5353304049198007619L;
 
-  private String name;
+    private String name;
 
-  private Integer age;
+    private Integer age;
 }

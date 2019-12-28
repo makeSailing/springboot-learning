@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HelloController {
 
-  @GetMapping("/hello")
-  public String getHello() throws Exception {
-    throw new Exception("发生未知错误");
-  }
+    @GetMapping("/hello")
+    public String getHello() throws Exception {
+        throw new Exception("发生未知错误");
+    }
 
-  @GetMapping("/world")
-  public String getWorld() {
-    throw new MyException("发生自定义错误");
-  }
+    @GetMapping("/world")
+    public String getWorld() {
+        throw new MyException("发生自定义错误");
+    }
 }

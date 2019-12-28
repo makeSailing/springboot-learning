@@ -8,7 +8,7 @@ import org.springframework.cache.annotation.EnableCaching;
 @EnableCaching // 开启缓存注解
 public class SpringbootJpaApplication {
 
-  public static void main(String[] args) {
-    SpringApplication.run(SpringbootJpaApplication.class, args);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(SpringbootJpaApplication.class, args);
+    }
 }
